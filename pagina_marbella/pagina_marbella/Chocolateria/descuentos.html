@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRANDES DESCUENTOS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="ejemplo1.js" defer></script>
+    
+</head>
+      
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'open sans';
+        }
+
+        .contenedor{
+            padding: 60px 0;
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .titulo{
+            color:#CB6CE6;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* Header */
+
+        header{
+            width: 100%;
+            height: 600px;
+            background: #FF9AA2; 
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #FFB7B2, #FF9AA2);  
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, hsla(332, 74%, 70%, 0.459), hsla(325, 79%, 68%, 0.644)), url(img/fondoo.jpg);
+             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        nav{
+            text-align: right;
+            padding: 30px 50px 0 0;
+
+        }
+
+        nav > a{
+            color: #fff;
+            font-weight: 300;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        nav > a:hover{
+            text-decoration: underline;
+        
+        }
+
+        header .textos-header{
+            display: flex;
+            height: 430px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .textos-header h1{
+            font-size: 50px;
+            color: #fff;
+        }
+
+        .textos-header h2{
+            font-size: 30px;
+            font-weight: 300;
+            color:#fff;
+        }
+
+        .wave{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* About us */
+
+        .contenedor-sobre-nosotros{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        .imagen-about-us{
+            width: 48%;
+        }
+
+        .sobre-nosotros .contenido-textos{
+            width: 48%;
+        }
+
+        .contenido-textos h3{
+            margin-bottom: 15px;
+        }
+        
+        .contenido-textos h3 span{
+            background: #64c27b;
+            color: #fff;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+            padding: 2px;
+            box-shadow: 0 0 6px 0 rgba(0, 0,0, .5);
+            margin-right: 5px;
+        }
+
+        .contenido-textos p{
+            padding: 0px 0px 30px 15px;
+            font-weight: 300;
+            text-align: justify;
+        }
+      
+        /* Galeria */
+        
+        .portafolio{
+            background: #C7CEEA;
+        }
+
+        .galeria-port{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .imagen-port{
+            width: 24%;
+            margin-bottom: 10px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 0 6px 0 rgba(0, 0,0, .5);
+        }
+
+        .imagen-port > img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hover-galeria{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top:0;
+            transform: scale(0);
+            background: hsla(315, 78%, 70%, 0.7);
+            transition: transform .5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .hover-galeria img{
+            width: 50px;
+        }
+
+        .hover-galeria p{
+            color: #fff;
+        }
+
+        .imagen-port:hover .hover-galeria{
+            transform: scale(1);
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FF9AA2;
+            margin: 0;
+            padding: 0;
+            
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #FFB7B2, #FFDAC1);
+
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(16, 226, 51, 0.1);
+        }
+        
+        /* Estilos de los anuncios */
+        .advertisement {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .advertisement-item {
+            width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            background-color: #FF9AA2;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(9, 230, 9, 0.1);
+        }
+        
+        .advertisement-item video {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        
+        .advertisement-item h3 {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .advertisement-item p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        .rating-box{
+            position: relative;
+            background: #FF9AA2;
+            padding: 25px 50px 35px;
+            border-radius: 25px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+        }
+        .rating-box header{
+            font-size: 22px;
+            color: #000;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .rating-box .stars{
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .stars i{
+            color: #e6e6e6;
+            font-size: 35px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .stars i.active{
+            color: #C7CEEA;
+        }
+    
+         
+        
+      </style>
+<body>
+
+    
+    <header>
+        
+        <section class="textos-header">
+           <h1> VERDE BENITO </h1>
+           <h2>Grandes descuentos en tienda   </h2>
+          
+        </section>
+        <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
+    </header>
+    <main>
+        
+        <section class="portafolio">
+            
+            <div class="contenedor">
+                <h1 class="titulo">¡DESCUENTOS! </h1>
+                <div class="galeria-port">
+                    <div class="imagen-port">
+                        <img src="img/30.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>CEREZA -10%</p>
+                            <p>$60.00</p>
+
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/31.webp" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>GUANABANA -5%</p>
+                            <p>$70.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/32.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>FRESA -15%</p>
+                            <p>$35.80</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/33.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>KIWI -5%</p>
+                            <p>$25.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/34.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p> DURAZNO -15%</p>
+                            <p>$18.90</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/35.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>YAKA LA PIEZA -10%</p>
+                            <p>$60.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/36.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>PERA EL KILO -5%</p>
+                            <p>$10.50</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/40.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>REPOLLO LA PIEZA -5%</p>
+                            <p>$10.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/41.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>COLIFOR LA PIEZA -5%</p>
+                            <p>$20.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/42.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>BROCOLI LA PIEZA -5%</p>
+                            <p>$15.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/43.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>EJOTES POR KILO -10%</p>
+                            <p>$15.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/44.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>CHAYOTE POR PIEZA -5%</p>
+                            <p>$15.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/45.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>ALCACHOFA POR PIEZA -10%</p>
+                            <p>$30.50</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/46.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>ACELGA POR RAMO -5%</p>
+                            <p>$12.90</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/47.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>APIO -5%</p>
+                            <p>$18.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/48.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>CALABACIN POR KILO -15%</p>
+                            <p>$8.00/p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/49.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>BONIATO POR KILO -10%</p>
+                            <p>$30.00</p>
+                        </div>
+                    </div>
+
+                   
+                  
+                  
+                </div>
+            </div>
+                  
+        </section>
+        
+    
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+
+
+    <div class="container">
+        <h1>VERDE BENITO</h1>
+       
+    
+        <div class="advertisement">
+            <div class="advertisement-item">
+                <video controls>
+                    <source src="img/video7.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>ENCONTRARAS NUESTROS MEJORES DESCUENTOS </h3>
+                <p>¡Frutas y verduras de buena calidad!</p>
+            </div>
+            <div class="advertisement-item">
+                <video controls>
+                    <source src="img/video8.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>ENCONTRARAS</h3>
+                <p>Nuestros mejores precios de tienda.</p>
+            </div>
+            <div class="advertisement-item">
+                <video controls>
+                    <source src="img/video9.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>VISITA NUESTRA TIENDA VERDE BENITO</h3>
+                <p>Aprovecha nuestras mejores descuentos de temporada.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <style>
+
+        button {
+            background-color: #E2F0CB; /* Color de fondo */
+            color: #FFB7B2; /* Color de texto */
+            padding: 10px 20px; /* Espaciado interno */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cursor al pasar */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+
+        button:hover {
+            background-color: #FFDAC1; /* Cambio de color al pasar el mouse */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón de Regresar</title>
+</head>
+<body>
+
+    
+
+
+   
+
+    <h1>Reproductor de Audio</h1>
+    <audio controls>
+      <source src="img/audio2.mp4" type="audio/mp3">
+      Tu navegador no soporta la reproducción de audio.
+    </audio>
+    
+    <!-- Botón para regresar -->
+    <button onclick="window.location.href = 'index.html';"> Regresar</button>
+
+    <button onclick="window.location.href = 'calificar.html';">Decea calificarnos</button>
+
+    
+    </div>
+
+
+    
+    
+</body>
+</html>
+
+
+
+
+      

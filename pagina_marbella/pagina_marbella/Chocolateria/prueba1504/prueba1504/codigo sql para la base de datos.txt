@@ -1,0 +1,21 @@
+-- Crear la base de datos
+CREATE DATABASE PagosTarjeta;
+
+-- Usar la base de datos creada
+USE PagosTarjeta;
+
+-- Crear la tabla para almacenar la información
+CREATE TABLE InformacionPago (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombreCompleto VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    direccion VARCHAR(255) NOT NULL,
+    ciudad VARCHAR(100) NOT NULL,
+    estado VARCHAR(100) NOT NULL,
+    codigoPostal VARCHAR(20) NOT NULL,
+    nombreTarjeta VARCHAR(255) NOT NULL,
+    creditoTarjeta VARCHAR(20) NOT NULL,
+    mesVencimiento VARCHAR(50) NOT NULL,
+    anoVencimiento INT NOT NULL,
+    cvv VARCHAR(10) NOT NULL
+);

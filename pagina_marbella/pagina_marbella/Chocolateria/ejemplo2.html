@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en línea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #E2F0CB;
+            color: #000;
+            text-align: center;
+            padding: 10px 0;
+            background: url(img/frutas4.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+        }
+
+        header h1 {
+            text-align: center;
+            font-size: 35px;
+            color: #000;
+            padding: 30px 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #FFB7B2;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .factura {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .producto img {
+            width: 50px; /* Tamaño pequeño para la imagen del producto */
+        }
+
+        #tabla-productos img {
+            width: 50px; /* Tamaño pequeño para las imágenes de los productos */
+            height: auto; /* Altura automática para mantener la proporción */
+        }
+
+        .navbar {
+            background-color: #FF9AA2; /* Color de fondo del navbar */
+            overflow: hidden; /* Para manejar elementos flotantes */
+            text-align: right; /* Alineación del texto a la derecha */
+        }
+
+        .navbar a {
+            display: inline-block; /* Convertir en bloque para el espaciado */
+            color: #fff; /* Color del texto */
+            padding: 14px 16px; /* Espaciado interno */
+            text-decoration: none; /* Quitar subrayado de los enlaces */
+        }
+
+        .navbar a:hover {
+            background-color: #FFB7B2; /* Color de fondo al pasar el mouse */
+            color: #d0fdd7; /* Color del texto al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="Chocolateria/prueba 1504/index.html">METODO DE PAGO</a>
+    </nav>
+
+    <header>
+        <h1>VERDE BENITO</h1>
+    </header>
+
+    <main>
+        <section id="productos">
+            <h2>FRUTAS Y VERDURAS</h2>
+            <table id="tabla-productos">
+                <thead>
+                    <tr>
+                        <th>Producto/otro</th>
+                        <th>Precio</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="img/verdura4.jpg" alt="cebolla"></td>
+                        <td>Cebolla por kilo</td>
+                        <td>$15</td>
+                        <td><button onclick="agregarProducto('cebolla', 15)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/verdura3.jpg" alt="brocoli"></td>
+                        <td>Brocoli por kilo</td>
+                        <td>$25</td>
+                        <td><button onclick="agregarProducto('brocoli', 25)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/verdura2.jpeg" alt="berenjena"></td>
+                        <td>Berenjena por kilo</td>
+                        <td>$65.90</td>
+                        <td><button onclick="agregarProducto('berenjena', 65.90)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10.jpg" alt="zanahoria"></td>
+                        <td>Zanahoria por kilo</td>
+                        <td>$12.50</td>
+                        <td><button onclick="agregarProducto('zanahoria', 12.50)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img9.jpg" alt="legumbres"></td>
+                        <td>Legumbres 2kg</td>
+                        <td>$180.90</td>
+                        <td><button onclick="agregarProducto('legumbres', 180.90)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img7.jpg" alt="sopa de verdura"></td>
+                        <td>Sopa de verdura</td>
+                        <td>$30</td>
+                        <td><button onclick="agregarProducto('sopa de verdura', 30)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/fruta2.jpg" alt="kiwi"></td>
+                        <td>Kiwi por kilo</td>
+                        <td>$40.80</td>
+                        <td><button onclick="agregarProducto('kiwi', 40.80)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img6.webp" alt="Bolsa de verdura"></td>
+                        <td>Bolsa de verdura</td>
+                        <td>$15</td>
+                        <td><button onclick="agregarProducto('Bolsa de verdura', 15)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img4.jpg" alt="Papaya"></td>
+                        <td>Papaya por kilo</td>
+                        <td>$34.90</td>
+                        <td><button onclick="agregarProducto('Papaya', 34.90)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img2.jpg" alt="uva"></td>
+                        <td>uva por kilo</td>
+                        <td>$44.90</td>
+                        <td><button onclick="agregarProducto('uva', 44.90)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img1.jpg" alt="fresa "></td>
+                        <td>Fresa por kilo</td>
+                        <td>$40</td>
+                        <td><button onclick="agregarProducto('fresa', 40)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/fruta5.png" alt="piña"></td>
+                        <td>Piña por pieza</td>
+                        <td>$20</td>
+                        <td><button onclick="agregarProducto('piña', 20)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/fruta4.webp" alt="mango"></td>
+                        <td>Mango por kilo</td>
+                        <td>$41.90</td>
+                        <td><button onclick="agregarProducto('mango', 41.90)">Agregar al carrito</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/fruta3.jpg" alt="aguacate"></td>
+                        <td>Aguacate por kilo</td>
+                        <td>$22</td>
+                        <td><button onclick="agregarProducto('aguacate', 22)">Agregar al carrito</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="carrito">
+            <h2>Carrito de compras</h2>
+            <table id="tabla-carrito">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-productos"></tbody>
+            </table>
+            <button onclick="generarFactura()">Generar Factura</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tienda VERDE BENITO línea</p>
+    </footer>
+    <script src="ejemplo3.js"></script>
+</body>
+</html>

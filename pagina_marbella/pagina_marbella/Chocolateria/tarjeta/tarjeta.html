@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesar Pago</title>
+    
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    input, button {
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    
+    button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    
+
+</style>
+<body>
+
+    <form id="paymentForm" method="post" action="guardar_compra.php">
+        <!-- Resto del formulario igual -->
+    
+    
+      <div class="container">
+            <h1>Procesar Pago</h1>
+          <form id="paymentForm">
+                <label for="cardNumber">Número de Tarjeta:</label>
+                <input type="text" id="cardNumber" name="cardNumber" maxlength="16" placeholder="Ingrese el número de tarjeta" required>
+                <label for="cardExpiry">Fecha de Vencimiento:</label>
+                <input type="text" id="cardExpiry" name="cardExpiry" maxlength="5" placeholder="MM/AA" required>
+                <label for="cardCVC">CVC:</label>
+                <input type="text" id="cardCVC" name="cardCVC" maxlength="3" placeholder="CVC" required>
+                <button type="submit">Pagar</button>
+          </form>
+      </div>
+  </form>
+
+    <script src="prueba4.js"></script>
+</body>
+</html>
+

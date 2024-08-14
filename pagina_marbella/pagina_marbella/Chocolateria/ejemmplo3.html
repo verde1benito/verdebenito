@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en línea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #E2F0CB;
+            color: #000;
+            text-align: center;
+            padding: 10px 0;
+            background: url(img/frutas4.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+        }
+
+        header h1 {
+            text-align: center;
+            font-size: 35px;
+            color: #000;
+            padding: 30px 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #FFB7B2;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .factura {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .producto img {
+            width: 50px; /* Tamaño pequeño para la imagen del producto */
+        }
+
+        #tabla-productos img {
+            width: 50px; /* Tamaño pequeño para las imágenes de los productos */
+            height: auto; /* Altura automática para mantener la proporción */
+        }
+
+        .navbar {
+            background-color: #FF9AA2; /* Color de fondo del navbar */
+            overflow: hidden; /* Para manejar elementos flotantes */
+            text-align: right; /* Alineación del texto a la derecha */
+        }
+
+        .navbar a {
+            display: inline-block; /* Convertir en bloque para el espaciado */
+            color: #fff; /* Color del texto */
+            padding: 14px 16px; /* Espaciado interno */
+            text-decoration: none; /* Quitar subrayado de los enlaces */
+        }
+
+        .navbar a:hover {
+            background-color: #FFB7B2; /* Color de fondo al pasar el mouse */
+            color: #d0fdd7; /* Color del texto al pasar el mouse */
+        }
+
+        .factura-container {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        .factura-container h2 {
+            text-align: center;
+        }
+
+        .factura-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .factura-container th, .factura-container td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .factura-container button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #FFB7B2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .factura-container button:hover {
+            background-color: #FF9AA2;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="ejemplo3.js/ejemplo.js/index.html">METODO DE PAGO</a>
+    </nav>
+
+    <header>
+        <h1>VERDE BENITO</h1>
+    </header>
+
+    <main>
+        <section id="productos">
+            <h2>FRUTAS Y VERDURAS</h2>
+            <table id="tabla-productos">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="img/verdura4.jpg" alt="cebolla"></td>
+                        <td>Cebolla por kilo</td>
+                        <td>$15</td>
+                        <td>
+                            <input type="number" id="cantidad-cebolla" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Cebolla', 15)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/verdura3.jpg" alt="brocoli"></td>
+                        <td>Brocoli por kilo</td>
+                        <td>$25</td>
+                        <td>
+                            <input type="number" id="cantidad-brocoli" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Brocoli', 25)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/verdura2.jpeg" alt="berenjena"></td>
+                        <td>Berenjena por kilo</td>
+                        <td>$65.90</td>
+                        <td>
+                            <input type="number" id="cantidad-berenjena" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Berenjena', 65.90)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10.jpg" alt="zanahoria"></td>
+                        <td>Zanahoria por kilo</td>
+                        <td>$12.50</td>
+                        <td>
+                            <input type="number" id="cantidad-zanahoria" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Zanahoria', 12.50)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img9.jpg" alt="legumbres"></td>
+                        <td>Legumbres 2kg</td>
+                        <td>$180.90</td>
+                        <td>
+                            <input type="number" id="cantidad-legumbres" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Legumbres', 180.90)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img7.jpg" alt="sopa de verdura"></td>
+                        <td>Sopa de verdura</td>
+                        <td>$30</td>
+                        <td>
+                            <input type="number" id="cantidad-sopa" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Sopa de verdura', 30)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/fruta2.jpg" alt="kiwi"></td>
+                        <td>Kiwi por kilo</td>
+                        <td>$40.80</td>
+                        <td>
+                            <input type="number" id="cantidad-kiwi" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Kiwi', 40.80)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img6.webp" alt="Bolsa de verdura"></td>
+                        <td>Bolsa de verdura</td>
+                        <td>$15</td>
+                        <td>
+                            <input type="number" id="cantidad-bolsa" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Bolsa de verdura', 15)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img4.jpg" alt="Papaya"></td>
+                        <td>Papaya por kilo</td>
+                        <td>$34.90</td>
+                        <td>
+                            <input type="number" id="cantidad-papaya" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Papaya', 34.90)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/img2.jpg" alt="uva"></td>
+                        <td>Uva por kilo</td>
+                        <td>$44.90</td>
+                        <td>
+                            <input type="number" id="cantidad-uva" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Uva', 44.90)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/aguacate.jpg" alt="aguacate"></td>
+                        <td>Aguacate por kilo</td>
+                        <td>$60.80</td>
+                        <td>
+                            <input type="number" id="cantidad-aguacate" placeholder="kg" min="0.1" step="0.1">
+                            <button onclick="agregarProducto('Aguacate', 60.80)">Agregar al carrito</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="carrito">
+            <h2>Carrito de Compras</h2>
+            <table id="tabla-carrito">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Precio Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="carrito-body">
+                    <!-- Productos agregados al carrito aparecerán aquí -->
+                </tbody>
+            </table>
+            <button onclick="generarFactura()">Generar Factura</button>
+        </section>
+    </main>
+    <div class="factura-container" id="factura">
+        <h2>Factura</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Precio Total</th>
+                </tr>
+            </thead>
+            <tbody id="factura-body">
+                <!-- Productos de la factura aparecerán aquí -->
+            </tbody>
+        </table>
+        <button onclick="imprimirFactura()">Imprimir Factura</button>
+    </div>
+    <footer>
+        <p>Todos los derechos reservados &copy; 2024</p>
+    </footer>
+    <script>
+        var carrito = [];
+
+        function agregarProducto(nombre, precio) {
+            var cantidadInput = document.getElementById('cantidad-' + nombre.toLowerCase().replace(/\s+/g, '-'));
+            var cantidad = parseFloat(cantidadInput.value);
+            if (cantidad > 0) {
+                var producto = carrito.find(p => p.nombre === nombre);
+                if (producto) {
+                    producto.cantidad += cantidad;
+                } else {
+                    carrito.push({ nombre, cantidad, precio });
+                }
+                actualizarCarrito();
+                cantidadInput.value = '';
+            } else {
+                alert('Por favor, ingresa una cantidad válida.');
+            }
+        }
+
+        function actualizarCarrito() {
+            var carritoBody = document.getElementById('carrito-body');
+            carritoBody.innerHTML = '';
+            carrito.forEach(producto => {
+                var row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${producto.nombre}</td>
+                    <td>${producto.cantidad} kg</td>
+                    <td>$${producto.precio.toFixed(2)}</td>
+                    <td>$${(producto.cantidad * producto.precio).toFixed(2)}</td>
+                    <td><button onclick="eliminarProducto('${producto.nombre}')">Eliminar</button></td>
+                `;
+                carritoBody.appendChild(row);
+            });
+        }
+
+        function eliminarProducto(nombre) {
+            carrito = carrito.filter(p => p.nombre !== nombre);
+            actualizarCarrito();
+        }
+
+        function generarFactura() {
+            var facturaBody = document.getElementById('factura-body');
+            facturaBody.innerHTML = '';
+            carrito.forEach(producto => {
+                var row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${producto.nombre}</td>
+                    <td>${producto.cantidad} kg</td>
+                    <td>$${producto.precio.toFixed(2)}</td>
+                    <td>$${(producto.cantidad * producto.precio).toFixed(2)}</td>
+                `;
+                facturaBody.appendChild(row);
+            });
+            document.getElementById('factura').style.display = 'block';
+        }
+
+        function imprimirFactura() {
+            var facturaContenido = document.getElementById('factura').innerHTML;
+            var ventana = window.open('', '', 'height=600,width=800');
+            ventana.document.write('<html><head><title>Factura</title></head><body>');
+            ventana.document.write(facturaContenido);
+            ventana.document.write('</body></html>');
+            ventana.document.close();
+            ventana.print();
+        }
+    </script>
+</body>
+</html>

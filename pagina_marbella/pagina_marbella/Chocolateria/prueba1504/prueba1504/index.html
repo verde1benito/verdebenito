@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago por tarjeta</title>
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-transform: capitalize;
+            transition: all .2s linear;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            min-height: 100vh;
+            background: linear-gradient(90deg, #B5EAD7 60%, #B5EAD7 40.1%);
+        }
+
+        .container form {
+            padding: 20px;
+            width: 700px;
+            background: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+        }
+
+        .container form .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .container form .row .col {
+            flex: 1 1 250px;
+        }
+
+        .container form .row .col .title {
+            font-size: 20px;
+            color: #333;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .container form .row .col .inputBox {
+            margin: 15px 0;
+        }
+
+        .container form .row .col .inputBox span {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .container form .row .col .inputBox input {
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            font-size: 15px;
+            text-transform: none;
+        }
+
+        .container form .row .col .inputBox input:focus {
+            border: 1px solid #000;
+        }
+
+        .container form .row .col .flex {
+            display: flex;
+            gap: 15px;
+        }
+
+        .container form .row .col .flex .inputBox {
+            margin-top: 5px;
+        }
+
+        .container form .row .col .inputBox img {
+            height: 34px;
+            margin-top: 5px;
+            filter: drop-shadow(0 0 1px #000);
+        }
+
+        .container form .submit-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 17px;
+            background: #FFB7B2;
+            color: #fff;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        .container form .submit-btn:hover {
+            background: #FF9AA2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="guardar_datos.php" method="post">
+
+            <div class="row">
+                <div class="col">
+                    <h3 class="title">DIRECCIÓN DE ENVÍO</h3>
+                    <div class="inputBox">
+                        <span>Nombre completo:</span>
+                        <input type="text" name="nombreCompleto" placeholder="john deo">
+                    </div>
+                    <div class="inputBox">
+                        <span>Email:</span>
+                        <input type="email" name="email" placeholder="example@gmail.com">
+                    </div>
+                    <div class="inputBox">
+                        <span>Dirección:</span>
+                        <input type="text" name="direccion" placeholder="room-street-locality">
+                    </div>
+                    <div class="inputBox">
+                        <span>Ciudad:</span>
+                        <input type="text" name="ciudad" placeholder="mumbai">
+                    </div>
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>Estado:</span>
+                            <input type="text" name="estado" placeholder="india">
+                        </div>
+                        <div class="inputBox">
+                            <span>Código postal:</span>
+                            <input type="text" name="codigoPostal" placeholder="123 456">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3 class="title">PAGO</h3>
+                    <div class="inputBox">
+                        <span>Tarjetas aceptadas:</span>
+                        <img src="img/tarjetas.png" alt="">
+                    </div>
+                    <div class="inputBox">
+                        <span>Nombre de la tarjeta:</span>
+                        <input type="text" name="nombreTarjeta" placeholder="mr.john deo">
+                    </div>
+                    <div class="inputBox">
+                        <span>Credito de la tarjeta:</span>
+                        <input type="text" name="creditoTarjeta" placeholder="111-111-1111">
+                    </div>
+                    <div class="inputBox">
+                        <span>Mes de vencimiento:</span>
+                        <input type="text" name="mesVencimiento" placeholder="january">
+                    </div>
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>Año de vencimiento:</span>
+                            <input type="text" name="anoVencimiento" placeholder="2022">
+                        </div>
+                        <div class="inputBox">
+                            <span>CVV:</span>
+                            <input type="text" name="cvv" placeholder="1234">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="proceed to checkout" class="submit-btn">
+        </form>
+    </div>
+</body>
+
+
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <style>
+
+        button {
+            background-color: #FF9AA2; /* Color de fondo */
+            color: #EDE5D8; /* Color de texto */
+            padding: 10px 20px; /* Espaciado interno */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cursor al pasar */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+
+        button:hover {
+            background-color: #FF9AA2; /* Cambio de color al pasar el mouse */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón de Regresar</title>
+</head>
+<body>
+    
+    <!-- Botón para regresar -->
+    <button onclick="window.location.href = 'Chocolateria/proyecto1.html';"> Regresar</button>
+</body>
+</html>

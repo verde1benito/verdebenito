@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras y Pago OXXO</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .cart { margin: 20px; }
+        .cart table { width: 100%; border-collapse: collapse; }
+        .cart table, .cart th, .cart td { border: 1px solid #ddd; }
+        .cart th, .cart td { padding: 8px; text-align: left; }
+        .cart th { background-color: #f4f4f4; }
+        #barcode { margin: 20px 0; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+    <div class="cart">
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Los productos se agregarán aquí dinámicamente -->
+            </tbody>
+        </table>
+        <p><strong>Total:</strong> $<span id="total">0.00</span></p>
+    </div>
+    <button onclick="generateBarcode()">Generar Código de Barras</button>
+    <div id="barcode"></div>
+
+    <script>
+        // Datos de ejemplo
+        const products = [
+            { name: 'Producto A', price: 50.00 },
+            { name: 'Producto B', price: 30.00 },
+            { name: 'Producto C', price: 20.00 }
+        ];
+
+        const cartItems = [
+            { name: 'Producto A', price: 50.00, quantity: 2 },
+            { name: 'Producto B', price: 30.00, quantity: 1 }
+        ];
+
+        function updateCart() {
+            const cartTable = document.getElementById('cart-items');
+            let total = 0;
+
+            cartTable.innerHTML = '';
+
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                cartTable.innerHTML += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>$${item.price.toFixed(2)}</td>
+                        <td>${item.quantity}</td>
+                        <td>$${itemTotal.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('total').textContent = total.toFixed(2);
+        }
+
+        function generateBarcode() {
+            const total = document.getElementById('total').textContent;
+            JsBarcode('#barcode', total, {
+                format: 'CODE128',
+                width: 2,
+                height: 40,
+                displayValue: true
+            });
+        }
+
+        updateCart(); // Inicializar el carrito
+    </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verdulería y Frutería a Domicilio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            background-color: #FF9AA2;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100px;
+            border-radius: 8px;
+        }
+
+        .product-info {
+            flex-grow: 1;
+            margin-left: 1rem;
+        }
+
+        .product-info h2 {
+            margin: 0;
+            color: #B5EAD7;
+        }
+
+        .product-info p {
+            margin: 0.5rem 0;
+        }
+
+        .order-form {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-form input,
+        .order-form textarea,
+        .order-form button {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .order-form button {
+            background-color: #FFB7B2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .order-form button:hover {
+            background-color: #FF9AA2;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #FF9AA2;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: auto;
+        }
+
+        .back-button:hover {
+            background-color: #FFB7B2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verdulería y Frutería a Domicilio</h1>
+    </header>
+
+    <div class="container">
+        <h1>Productos Disponibles</h1>
+        <div class="product">
+            <img src="img/verdura4.jpg" alt="Cebolla">
+            <div class="product-info">
+                <h2>Cebolla</h2>
+                <p>$15</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/10.jpg" alt="Brócoli">
+            <div class="product-info">
+                <h2>Brócoli</h2>
+                <p>$25</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/12.jpg" alt="Berenjena">
+            <div class="product-info">
+                <h2>Berenjena</h2>
+                <p>$65.90</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/img10.webp" alt="Zanahoria">
+            <div class="product-info">
+                <h2>Zanahoria</h2>
+                <p>$12.50</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/img9.jpg" alt="Legumbres">
+            <div class="product-info">
+                <h2>Legumbres</h2>
+                <p>$180.90</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/img7.jpg" alt="Sopa de Verdura">
+            <div class="product-info">
+                <h2>Sopa de Verdura</h2>
+                <p>$30</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/fruta2.jpg" alt="Kiwi">
+            <div class="product-info">
+                <h2>Kiwi</h2>
+                <p>$40.80</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/img6.webp" alt="Bolsa de Verdura">
+            <div class="product-info">
+                <h2>Bolsa de Verdura</h2>
+                <p>$15</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/img4.jpg" alt="Papaya">
+            <div class="product-info">
+                <h2>Papaya</h2>
+                <p>$34.90</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/img2.jpg" alt="Uva">
+            <div class="product-info">
+                <h2>Uva</h2>
+                <p>$44.90</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/img2.jpg" alt="Fresa">
+            <div class="product-info">
+                <h2>Fresa</h2>
+                <p>$40</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/fruta5.png" alt="Piña">
+            <div class="product-info">
+                <h2>Piña</h2>
+                <p>$20</p>
+            </div>
+        </div>
+        <h1>Realizar Pedido</h1>
+        <div class="order-form">
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+                <input type="text" name="address" placeholder="Dirección" required>
+                <textarea name="order-details" placeholder="Detalles del pedido" rows="4" required></textarea>
+                <button type="submit">Enviar Pedido</button>
+            </form>
+        </div>
+        <a href="proyecto1.html" class="back-button">Regresar a la Página Principal</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Frutas y Verduras</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('img/juego.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 22px;
+            color: #2980b9;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 15px 25px;
+            margin: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .button-fruta {
+            background-color: #e67e22;
+        }
+        .button-fruta:hover {
+            background-color: #d35400;
+            transform: scale(1.1);
+        }
+        .button-verdura {
+            background-color: #27ae60;
+        }
+        .button-verdura:hover {
+            background-color: #1e8449;
+            transform: scale(1.1);
+        }
+        .button-salida {
+            background-color: #e74c3c;
+        }
+        .button-salida:hover {
+            background-color: #c0392b;
+            transform: scale(1.1);
+        }
+        .result-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            text-align: center;
+            animation: popupFadeIn 0.5s ease;
+        }
+        .result-popup h1 {
+            font-size: 26px;
+            color: #2c3e50;
+        }
+        .timer {
+            font-size: 20px;
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes popupFadeIn {
+            from { transform: translate(-50%, -60%); opacity: 0; }
+            to { transform: translate(-50%, -50%); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="objeto-actual"></h1>
+        <div>
+            <button class="button button-fruta" onclick="verificarRespuesta('fruta')">Fruta</button>
+            <button class="button button-verdura" onclick="verificarRespuesta('verdura')">Verdura</button>
+        </div>
+        <h2 id="puntaje">Puntaje: 0</h2>
+        <div class="timer" id="timer">Tiempo restante: 60s</div>
+        <button class="button button-salida" onclick="salir()">Salir</button>
+    </div>
+    <div id="result-popup" class="result-popup">
+        <h1 id="result-message"></h1>
+    </div>
+
+    <script>
+        const frutas = ["Manzana", "Banana", "Cereza", "Uva", "Naranja", "Pera", "Piña", "Mango"];
+        const verduras = ["Zanahoria", "Brócoli", "Espinaca", "Lechuga", "Pepino", "Tomate", "Cebolla", "Pimiento"];
+        let puntaje = 0;
+        let objetoActual = "";
+        let tipoCorrecto = "";
+        let tiempoRestante = 60;
+        let temporizador;
+        let timeoutPopup;
+
+        function nuevoJuego() {
+            if (Math.random() < 0.5) {
+                objetoActual = frutas[Math.floor(Math.random() * frutas.length)];
+                tipoCorrecto = "fruta";
+            } else {
+                objetoActual = verduras[Math.floor(Math.random() * verduras.length)];
+                tipoCorrecto = "verdura";
+            }
+            document.getElementById('objeto-actual').innerText = objetoActual;
+        }
+
+        function verificarRespuesta(tipo) {
+            if (tipo === tipoCorrecto) {
+                puntaje++;
+                mostrarResultado("¡Correcto!");
+                reproducirSonido(true);
+            } else {
+                mostrarResultado("Incorrecto.");
+                reproducirSonido(false);
+            }
+            document.getElementById('puntaje').innerText = `Puntaje: ${puntaje}`;
+            nuevoJuego();
+        }
+
+        function mostrarResultado(mensaje) {
+            const popup = document.getElementById('result-popup');
+            document.getElementById('result-message').innerText = mensaje;
+            popup.style.display = 'block';
+            clearTimeout(timeoutPopup);
+            timeoutPopup = setTimeout(() => {
+                popup.style.display = 'none';
+            }, 1000);
+        }
+
+        function salir() {
+            clearInterval(temporizador);
+            finalizarJuego();
+        }
+
+        function iniciarTemporizador() {
+            temporizador = setInterval(() => {
+                tiempoRestante--;
+                document.getElementById('timer').innerText = `Tiempo restante: ${tiempoRestante}s`;
+                if (tiempoRestante <= 0) {
+                    clearInterval(temporizador);
+                    finalizarJuego();
+                }
+            }, 1000);
+        }
+
+        function finalizarJuego() {
+            document.getElementById('result-message').innerText = `Juego terminado. Puntaje final: ${puntaje}`;
+            document.getElementById('result-popup').style.display = 'block';
+            // Deshabilitar botones para finalizar el juego
+            document.querySelectorAll('.button').forEach(button => button.disabled = true);
+        }
+
+        function reproducirSonido(correcto) {
+            const audio = new Audio();
+            audio.src = correcto ? 'audio/correcto.mp3' : 'audio/incorrecto.mp3';
+            audio.play();
+        }
+
+        nuevoJuego();
+        iniciarTemporizador();
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre nosotros</title>
+</head>
+      
+      <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'open sans';
+        }
+
+        .contenedor{
+            padding: 60px 0;
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .titulo{
+            color:#FF9AA2;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* Header */
+
+        header{
+            width: 100%;
+            height: 600px;
+            background: #B5EAD7; 
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #E2F0CB, #E2F0CB);  
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, hsla(184, 93%, 72%, 0.459), hsla(194, 89%, 75%, 0.644)), url(img/frutas2.jpg);
+             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        nav{
+            text-align: right;
+            padding: 30px 50px 0 0;
+
+        }
+
+        nav > a{
+            color: #fff;
+            font-weight: 300;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        nav > a:hover{
+            text-decoration: underline;
+        
+        }
+
+        header .textos-header{
+            display: flex;
+            height: 430px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .textos-header h1{
+            font-size: 50px;
+            color: #fff;
+        }
+
+        .textos-header h2{
+            font-size: 30px;
+            font-weight: 300;
+            color:#fff;
+        }
+
+        .wave{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* About us */
+
+        .contenedor-sobre-nosotros{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        .imagen-about-us{
+            width: 48%;
+        }
+
+        .sobre-nosotros .contenido-textos{
+            width: 48%;
+        }
+
+        .contenido-textos h3{
+            margin-bottom: 15px;
+        }
+        
+        .contenido-textos h3 span{
+            background: #C7CEEA;
+            color: #fff;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+            padding: 2px;
+            box-shadow: 0 0 6px 0 rgba(125, 207, 245, 0.5);
+            margin-right: 5px;
+        }
+
+        .contenido-textos p{
+            padding: 0px 0px 30px 15px;
+            font-weight: 300;
+            text-align: justify;
+        }
+      
+        /* Galeria */
+        
+        .portafolio{
+            background: #f2f2f2;
+        }
+
+        .galeria-port{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .imagen-port{
+            width: 24%;
+            margin-bottom: 10px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 0 6px 0 rgba(116, 224, 243, 0.5);
+        }
+
+        .imagen-port > img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hover-galeria{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top:0;
+            transform: scale(0);
+            background: hsla(177, 86%, 72%, 0.7);
+            transition: transform .5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .hover-galeria img{
+            width: 50px;
+        }
+
+        .hover-galeria p{
+            color: #fff;
+        }
+
+        .imagen-port:hover .hover-galeria{
+            transform: scale(1);
+        }
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #C7CEEA;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(16, 226, 51, 0.1);
+        }
+        
+        /* Estilos de los anuncios */
+        .advertisement {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .advertisement-item {
+            width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            background-color: #B5EAD7;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(9, 230, 9, 0.1);
+        }
+        
+        .advertisement-item video {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        
+        .advertisement-item h3 {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .advertisement-item p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+      </style>
+<body>
+    <header>
+        
+        <section class="textos-header">
+           <h1> FRUTAS Y VERDURAS VERDE BENITO </h1>
+           <h2>Tienda para la venta de Frutas y Verduras</h2>
+        </section>
+        <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
+    </header>
+    <main>
+        <section class="contenedor sobre-nosotros">
+            <h2 class="titulo">Venta de frutas y verduras</h2>
+            <div class="contenedor-sobre-nosotros">
+                <img src="img/fruta4.webp" alt="" class="imagen-about-us">
+                <div class="contenido-textos">
+                    <h3><span></span>VERDE BENITO</h3>
+                    <p>Somos una empresa dedicada a ofrecer una amplia variedad de frutas y verduras frescas y de alta calidad. Nuestro objetivo es proporcionar a nuestros clientes productos saludables y deliciosos, directamente del campo a su mesa. Contamos con una amplia selección de productos cultivados localmente y de temporada, así como opciones orgánicas. Además, ofrecemos servicios de entrega a domicilio para mayor comodidad de nuestros clientes. Nuestra prioridad es garantizar la frescura y la satisfacción de nuestros clientes en cada compra</p>
+                    <h3><span></span>CUENTA</h3>
+                    <p>Ofrecemos una amplia variedad de frutas y verduras frescas y de alta calidad, incluyendo opciones locales, de temporada y orgánicas. Además, proporcionamos servicios de entrega a domicilio para la comodidad de nuestros clientes.</p>
+                </div>
+            </div>
+        </section>
+        <section class="portafolio">
+            <div class="contenedor">
+                <h2 class="titulo">¡OFRECEMOS! </h2>
+                <div class="galeria-port">
+                    <div class="imagen-port">
+                        <img src="img/fruta1.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Ofrecemos a solo $20.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/fruta2.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Ofrecemos a solo $40.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/fruta3.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Ofrecemos a solo $22.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/verdura1.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Ofrecemos a solo $10.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/verdura2.jpeg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Ofrecemos a solo $60.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/verdura3.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Ofrecemos a solo $10.00 la pieza </p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/verdura4.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Ofrecemos a solo $8.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/fruta6.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Ofrecemos a solo $10.00 la pieza</p>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+                  
+        </section>
+        
+    
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <style>
+
+        button {
+            background-color: #FF9AA2; /* Color de fondo */
+            color: #FFB7B2; /* Color de texto */
+            padding: 10px 20px; /* Espaciado interno */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cursor al pasar */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+
+        button:hover {
+            background-color: #FFDAC1; /* Cambio de color al pasar el mouse */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón de Regresar</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>VERDE BENITO</h1>
+        <div class="advertisement">
+            <div class="advertisement-item">
+                <video controls>
+                    <source src="img/video5.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>DISFRUTA DE NUESTRA CALIDAD DE FRUTAS Y VERDURAS</h3>
+                <p>¡Descubre nuestra selección de frutas frescas directamente del campo!</p>
+            </div>
+            <div class="advertisement-item">
+                <video controls>
+                    <source src="img/video6.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>CON FRUTAS Y VERDURAS</h3>
+                <p>Las mejores verduras orgánicas para una vida saludable.</p>
+            </div>
+            <div class="advertisement-item">
+                <video controls>
+                    <source src="img/video7.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>APROVECHA NUESTRAS</h3>
+                <p>Aprovecha nuestras ofertas en frutas y verduras frescas esta semana.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Botón para regresar -->
+    <button onclick="window.location.href = 'index.html';"> Regresar</button>
+</body>
+</html>
+
+

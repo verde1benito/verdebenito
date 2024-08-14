@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERDE BENITO</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+    }
+
+    body {
+        max-width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .header {
+        background-color: #588100;
+        display: flex;
+        align-items: center;
+        min-height: 70vh;
+        padding: 100px 0;
+    }
+
+    .menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        color: #c6da52;
+        font-size: 25px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .menu .navbar ul li {
+        position: relative;
+        float: left;
+    }
+
+    .menu .navbar ul li a {
+        font-size: 18px;
+        padding: 20px;
+        color: #333128;
+        display: block;
+        font-weight: 600;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    .menu-icono {
+        width: 25px;
+    }
+
+    .menu label {
+        cursor: pointer;
+        display: none;
+    }
+
+    .submenu {
+        position: relative;
+    }
+
+    .submenu #carrito {
+        display: none;
+    }
+
+    .submenu:hover #carrito {
+        display: block;
+        position: absolute;
+        right: 0;
+        backdrop-filter: blur(10px);
+        top: 100%;
+        z-index: 1;
+        background-color: #4E485076;
+        padding: 20px;
+        min-width: 400px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        color: #ffff8b;
+    }
+
+    .borrar {
+        background-color: #8db600;
+        border-radius: 50%;
+        padding: 5px 10px;
+        color: #FFFFFF;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .header-content {
+        display: flex;
+    }
+
+    .header-txt {
+        flex-basis: 50%;
+    }
+
+    .header-txt span {
+        font-size: 16px;
+        color: #8DC84B;
+        font-weight: 700;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .header-txt h1 {
+        font-size: 55px;
+        line-height: 1;
+        color: #333128;
+        margin-bottom: 25px;
+    }
+
+    p {
+        font-size: 16px;
+        color: #181713;
+        margin-bottom: 45px;
+    }
+
+    .btn-1 {
+        display: inline-block;
+        padding: 13px 25px;
+        color: #FFFFFF;
+        border-radius: 25px;
+        background-color: #c6da52;
+        text-transform: capitalize;
+    }
+
+    .header-img {
+        flex-basis: 50%;
+        text-align: center;
+    }
+
+    .header-img img {
+        width: 400px;
+    }
+
+    .information {
+        width: 70%;
+        box-shadow: 0 0 20px rgb(0, 0, 0,0.1);
+        padding: 25px 75px;
+        margin-top: -75px;
+        background-color: #FFFFFF;
+    }
+
+    .information-content {
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .information-1 img {
+        width: 35px;
+    }
+
+    h3 {
+        font-size: 17px;
+        color: #181713;
+        text-transform: capitalize;
+    }
+
+    .information-1 p {
+        margin-bottom: 0;
+    }
+
+    .oferts {
+        padding: 100px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .ofert-1 {
+        text-align: center;
+        flex-basis: calc(25% - 20px);
+        box-shadow: 0 0 20px rgb(0, 0, 0,0.1);
+        padding: 35px;
+    }
+
+    .ofert-1 img {
+        width: 140px;
+        margin-bottom: 10px;
+    }
+
+    .ofert-1 p {
+        font-size: 15px;
+        margin: 0;
+        font-weight: 600;
+        color: #8db600;
+    }
+
+    .products {
+        padding: 0 0 100px 0;
+        text-align: center;
+    }
+
+    .products h2 {
+        font-size: 400px;
+        color: #181713;
+        text-transform: capitalize;
+        margin-bottom: 55px;
+    }
+
+    .product-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 50px;
+    }
+
+    .product {
+        text-align: center;
+        box-shadow: 0 0 20px rgb(0, 0, 0,0.1);
+        padding: 35px;
+    }
+
+    .product img {
+        width: 150px;
+        height: 130px;
+        margin-bottom: 10px;
+    }
+
+    .product h3 {
+        color: #8db600;
+    }
+
+    .product p {
+        font-size: 15px;
+        margin: 0;
+        color: #181713;
+        font-weight: 600;
+    }
+
+    .btn-2 {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 7px 25px;
+        border-radius: 5px;
+        color: #FFFFFF;
+        background-color: #8db600;
+    }
+
+    .service {
+        padding-bottom: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .service-1 {
+        flex-basis: 30%;
+        padding: 25px;
+        background-color: #FAF200;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .store {
+        width: 300px;
+        height: 250px;
+    }
+
+    .service-2 {
+        flex-basis: 40%;
+        padding: 25px;
+        background-color: #8db600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .service-3 {
+        flex-basis: 30%;
+        padding: 25px;
+        background-color: #588100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact {
+        padding-bottom: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form {
+        display: flex;
+    }
+
+    input {
+        padding: 17px 35px;
+        border-radius: 25px;
+        border: 1px solid #8db600;
+        outline: none;
+    }
+
+    .btn-3 {
+        margin-left: 10px;
+        color: #FFFFFF;
+        background-color: #588100;
+    }
+
+    .footer {
+        padding: 50px 0;
+        background-color: #8db600;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .link h3 {
+        color: #FFFFFF;
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .link a {
+        color: #f3f3f3;
+        font-size: 15px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .link a:hover {
+        color: #FFFFFF;
+    }
+
+    @media(max-width:991px) {
+        .menu {
+            padding: 30px;
+        }
+
+        .menu label {
+            display: initial;
+        }
+
+        .menu .navbar {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #8db600;
+            display: none;
+        }
+
+        .menu .navbar ul {
+            text-align: center;
+        }
+
+        .menu .navbar ul li {
+            width: 100%;
+        }
+
+        .menu .navbar ul li a {
+            padding: 15px 30px;
+            color: #FFFFFF;
+        }
+
+        #menu:checked~.navbar {
+            display: initial;
+        }
+
+        .header-content {
+            flex-wrap: wrap;
+        }
+
+        .header-img {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .header-img img {
+            width: 70%;
+        }
+
+        .information {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .information-content {
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .oferts {
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+        }
+
+        .products {
+            padding: 100px 20px;
+        }
+
+        .service {
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .contact {
+            padding: 0 20px 100px 20px;
+        }
+
+        .footer-content {
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+    }
+</style>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="menu">
+                <h2 class="logo">Verde Benito</h2>
+                <input type="checkbox" id="menu">
+                <label for="menu">
+                    <img src="img/menu (1).png" class="menu-icono" alt="">
+                </label>
+                <div class="navbar">
+                    
+                        <li class="submenu">
+                            <a href="#">
+                                <img src="img/car (1).svg" alt="">
+                            </a>
+                            <div id="carrito">
+                                <table id="lista-carrito" class="u-full-width">
+                                    <thead>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+                                <a href="#" id="procesar-pedido" class="button u-full-width">Procesar Compra</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-content">
+                <div class="header-txt">
+                    <span>Productos Ecológicos</span>
+                    <h1>De nuestra <br> tienda a tu <br> mesa</h1>
+                    <p>Brindamos las mejores frutas y verduras a los precios mas accesibles.</p>
+                    <a href="#" class="btn-1">ver productos</a>
+                </div>
+                <div class="header-img">
+                    <img src="img/verduleria.jpeg" alt="">
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="information">
+        <div class="information-content">
+            <div class="information-1">
+                <img src="img/i1.svg" alt="">
+                <h3>De la Tierra</h3>
+                <p>Provenientes del campo</p>
+            </div>
+            <div class="information-1">
+                <img src="img/i2.svg" alt="">
+                <h3>Con mejores precios</h3>
+                <p>Con distintos metodos de pago</p>
+            </div>
+            <div class="information-1">
+                <img src="img/i3.svg" alt="">
+                <h3>Transporte</h3>
+                <p>Envio hasta tu casa</p>
+            </div>
+        </div>
+    </section>
+    <section class="oferts container">
+        <div class="ofert-1">
+            <img src="img/11.jpg" alt="">
+            <h3>Papa por kilo</h3>
+            <p>$20.00</p>
+            <a href="#" class="btn-2 agregar-carrito" data-id="1">Agregar al Carrito</a>
+        </div>
+        <div class="ofert-1">
+            <img src="img/10.jpg" alt="">
+            <h3>Brocoli</h3>
+            <p>$12.00</p>
+            <a href="#" class="btn-2 agregar-carrito" data-id="2">Agregar al Carrito</a>
+        </div>
+        <div class="ofert-1">
+            <img src="img/12.jpg" alt="">
+            <h3>Berenjena</h3>
+            <p>$20.00</p>
+            <a href="#" class="btn-2 agregar-carrito" data-id="3">Agregar al Carrito</a>
+        </div>
+        <div class="ofert-1">
+            <img src="img/13.webp" alt="">
+            <h3>Vetabel por kilo</h3>
+            <p>$22.00</p>
+            <a href="#" class="btn-2 agregar-carrito" data-id="4">Agregar al Carrito</a>
+        </div>
+    </section>
+    <section class="products container">
+        <h1>Productos de temporada</h1>
+        <div class="product-content">
+            <div class="product">
+                <img src="img/14.webp" alt="">
+                <h3>Aguacate</h3>
+                <p>$40.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="5">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/15.jpg" alt="">
+                <h3>Jitomate</h3>
+                <p>$15.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="6">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/17.jpg" alt="">
+                <h3>Manzana</h3>
+                <p>$35.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="7">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/18.jpg" alt="">
+                <h3>Pera</h3>
+                <p>$20.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="8">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/30.jpg" alt="">
+                <h3>Cereza</h3>
+                <p>$60.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="9">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/31.webp" alt="">
+                <h3>Guanavana</h3>
+                <p>$80.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="10">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/32.jpg" alt="">
+                <h3>Fresa</h3>
+                <p>$60.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="11">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/33.jpg" alt="">
+                <h3>Kiwi</h3>
+                <p>$90.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="12">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/34.jpg" alt="">
+                <h3>Durazno</h3>
+                <p>$40.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="13">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/35.jpg" alt="">
+                <h3>Yaka</h3>
+                <p>$90.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="14">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/40.jpg" alt="">
+                <h3>Lechuga</h3>
+                <p>$20.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="15">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/41.jpg" alt="">
+                <h3>Coliflor</h3>
+                <p>$35.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="15">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/42.jpg" alt="">
+                <h3>Brocoli</h3>
+                <p>$12.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="16">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/43.jpg" alt="">
+                <h3>Ejote</h3>
+                <p>$20.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="17">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/44.jpg" alt="">
+                <h3>Chayote por pieza</h3>
+                <p>$15.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="18">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/48.jpg" alt="">
+                <h3>Calabaza</h3>
+                <p>$12.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="19">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/51.jpg" alt="">
+                <h3>Champiñon el kilo</h3>
+                <p>$80.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="20">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/45.jpg" alt="">
+                <h3>Alcachofa por pieza</h3>
+                <p>$50.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="21">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/47.jpg" alt="">
+                <h3>Apio la pieza</h3>
+                <p>$35.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="22">Agregar al Carrito</a>
+            </div>
+            <div class="product">
+                <img src="img/img10.webp" alt="">
+                <h3>Zanahoria</h3>
+                <p>$15.00</p>
+                <a href="#" class="btn-2 agregar-carrito" data-id="23">Agregar al Carrito</a>
+            </div>
+        </div>
+    </section>
+    <section class="service container">
+        <div class="service-1">
+            <img src="img/fruta2.jpg" alt="" class="store">
+        </div>
+        <div class="service-2">
+            <img src="img/fruta5.png" alt="" class="store">
+        </div>
+        <div class="service-3">
+            <img src="img/fruta4.webp" alt="" class="store">
+        </div>
+    </section>
+    <section class="contact container">
+        <form>
+            <input type="email" placeholder="Email">
+            <input type="submit" class="btn-3" value="Enviar">
+        </form>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="link">
+                    <h3>Ubicación</h3>
+                    <p>Carretera Federal Libre a Cuatro Carriles
+                        Mexico-Veracuz km 85, San Idelfonso Hueyotilpan,
+                        Tlaxcala, C.P:90240
+                    </p>
+                </div>
+                <div class="link">
+                    <h3>Contactos</h3>
+                    <a href="#">241-410-7786</a>
+                    <a href="#">749-850-4344</a>
+                    <a href="#">749-107-2734</a>
+                    <a href="#">241-414-8893</a>
+                    <a href="#">correo@verdebenito.com</a>
+                </div>
+                <div class="link">
+                    <h3>Redes Sociales</h3>
+                    <a href="#">Facebook: verde benito</a>
+                    <a href="#">Instagram: verde benito</a>
+                    
+                </div>
+            </div>
+        </div>
+    </footer> 
+    
+
+
+    <script src="tienda.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    
+</head>
+<body>
+    <div id="carrito">
+        <table id="lista-carrito">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Título</th>
+                    <th>Precio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        
+    </div>
+
+    
+
+    
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERDE BENITO</title>
+    <style>
+        /* CSS existente aquí */
+        /* Estilos para la factura */
+        #factura {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #8db600;
+            background-color: #f9f9f9;
+        }
+        #factura h2 {
+            text-align: center;
+            color: #8db600;
+        }
+        #factura table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        #factura th, #factura td {
+            padding: 10px;
+            border: 1px solid #8db600;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- Código HTML existente aquí -->
+
+    <div id="factura">
+        <h2>Factura de Compra</h2>
+        <table id="tabla-factura">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <p id="total-factura"></p>
+    </div>
+
+    <script>
+        // JavaScript para manejar el carrito y la factura
+        const carrito = [];
+        const agregarCarritoBtns = document.querySelectorAll('.agregar-carrito');
+        const listaCarrito = document.querySelector('#lista-carrito tbody');
+        const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
+        const procesarPedidoBtn = document.querySelector('#procesar-pedido');
+        const tablaFactura = document.querySelector('#tabla-factura tbody');
+        const totalFactura = document.querySelector('#total-factura');
+        const facturaDiv = document.querySelector('#factura');
+
+        agregarCarritoBtns.forEach(btn => {
+            btn.addEventListener('click', agregarCarrito);
+        });
+
+        vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
+        procesarPedidoBtn.addEventListener('click', procesarPedido);
+
+        function agregarCarrito(e) {
+            e.preventDefault();
+            const producto = e.target.parentElement;
+            const infoProducto = {
+                imagen: producto.querySelector('img').src,
+                nombre: producto.querySelector('h3').textContent,
+                precio: parseFloat(producto.querySelector('p').textContent.replace('$', '')),
+                id: producto.querySelector('a').getAttribute('data-id'),
+                cantidad: 1
+            };
+
+            const existe = carrito.some(prod => prod.id === infoProducto.id);
+            if (existe) {
+                const productos = carrito.map(prod => {
+                    if (prod.id === infoProducto.id) {
+                        prod.cantidad++;
+                        return prod;
+                    } else {
+                        return prod;
+                    }
+                });
+                carrito.splice(0, carrito.length, ...productos);
+            } else {
+                carrito.push(infoProducto);
+            }
+
+            actualizarCarrito();
+        }
+
+        function vaciarCarrito(e) {
+            e.preventDefault();
+            carrito.length = 0;
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            limpiarHTML();
+            carrito.forEach(producto => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><img src="${producto.imagen}" width="50"></td>
+                    <td>${producto.nombre}</td>
+                    <td>$${producto.precio}</td>
+                    <td>${producto.cantidad}</td>
+                    <td><a href="#" class="borrar" data-id="${producto.id}">X</a></td>
+                `;
+                listaCarrito.appendChild(row);
+            });
+        }
+
+        function limpiarHTML() {
+            while (listaCarrito.firstChild) {
+                listaCarrito.removeChild(listaCarrito.firstChild);
+            }
+        }
+
+        function procesarPedido(e) {
+            e.preventDefault();
+            facturaDiv.style.display = 'block';
+            tablaFactura.innerHTML = '';
+            let total = 0;
+
+            carrito.forEach(producto => {
+                const row = document.createElement('tr');
+                const subtotal = producto.precio * producto.cantidad;
+                total += subtotal;
+                row.innerHTML = `
+                    <td>${producto.nombre}</td>
+                    <td>${producto.cantidad}</td>
+                    <td>$${producto.precio}</td>
+                    <td>$${subtotal.toFixed(2)}</td>
+                `;
+                tablaFactura.appendChild(row);
+            });
+
+            totalFactura.textContent = `Total a pagar: $${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

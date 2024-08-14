@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('img/fondo4.jpg'); /* Ruta de tu imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.chat-container {
+    width: 400px; /* Ancho del contenedor principal */
+    max-width: 80%; /* Limitamos el ancho máximo para mantenerlo responsivo */
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Radio de borde */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra */
+    background-color: #fff; /* Color de fondo del contenedor */
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background-color: #b19cd9; /* Color de fondo del encabezado */
+    color: white;
+    padding: 20px; /* Espaciado */
+    border-top-left-radius: 20px; /* Borde */
+    border-top-right-radius: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 80px; /* Tamaño del logo */
+    height: 80px;
+    margin-bottom: 20px; /* Espaciado */
+}
+
+.moving-title {
+    animation: moveTitle 2s infinite alternate;
+}
+
+@keyframes moveTitle {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+}
+
+.chat-box {
+    padding: 20px; /* Espaciado */
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.chat-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bot-message {
+    background-color: #e0e0e0; /* Color de fondo de los mensajes */
+    text-align: left;
+}
+
+.user-message {
+    background-color: #ffb6c1; /* Color de fondo de los mensajes del usuario */
+    color: white;
+    text-align: right;
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+}
+
+#user-input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+button {
+    border: none;
+    padding: 10px;
+    background-color: #add8e6; /* Color de fondo del botón */
+    color: white;
+    cursor: pointer;
+    border-bottom-right-radius: 10px;
+}
+
+button:hover {
+    background-color: #87ceeb; /* Color de fondo del botón al pasar el mouse */
+}
+

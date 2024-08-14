@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestras novedades</title>
+</head>
+      
+      <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'open sans';
+        }
+
+        .contenedor{
+            padding: 60px 0;
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .titulo{
+            color:#E2F0CB;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* Header */
+
+        header{
+            width: 100%;
+            height: 600px;
+            background: #B5EAD7; 
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #7ad6f1, #80e7ee);  
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, hsla(189, 90%, 71%, 0.459), hsla(197, 81%, 68%, 0.644)), url(img/frutas6.jpg);
+             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        nav{
+            text-align: right;
+            padding: 30px 50px 0 0;
+
+        }
+
+        nav > a{
+            color: #fff;
+            font-weight: 300;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        nav > a:hover{
+            text-decoration: underline;
+        
+        }
+
+        header .textos-header{
+            display: flex;
+            height: 430px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .textos-header h1{
+            font-size: 50px;
+            color: #fff;
+        }
+
+        .textos-header h2{
+            font-size: 30px;
+            font-weight: 300;
+            color:#fff;
+        }
+
+        .wave{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* About us */
+
+        .contenedor-sobre-nosotros{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        .imagen-about-us{
+            width: 48%;
+        }
+
+        .sobre-nosotros .contenido-textos{
+            width: 48%;
+        }
+
+        .contenido-textos h3{
+            margin-bottom: 15px;
+        }
+        
+        .contenido-textos h3 span{
+            background: #FF9AA2;
+            color: #fff;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+            padding: 2px;
+            box-shadow: 0 0 6px 0 rgba(0, 0,0, .5);
+            margin-right: 5px;
+        }
+
+        .contenido-textos p{
+            padding: 0px 0px 30px 15px;
+            font-weight: 300;
+            text-align: justify;
+        }
+      
+        /* Galeria */
+        
+        .portafolio{
+            background: #FF9AA2;
+        }
+
+        .galeria-port{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .imagen-port{
+            width: 24%;
+            margin-bottom: 10px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 0 6px 0 rgba(0, 0,0, .5);
+        }
+
+        .imagen-port > img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hover-galeria{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top:0;
+            transform: scale(0);
+            background: hsla(202, 82%, 73%, 0.7);
+            transition: transform .5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .hover-galeria img{
+            width: 50px;
+        }
+
+        .hover-galeria p{
+            color: #fff;
+        }
+
+        .imagen-port:hover .hover-galeria{
+            transform: scale(1);
+        }
+      </style>
+<body>
+    <header>
+        
+        <section class="textos-header">
+           <h1> VERDE BENITO </h1>
+           <h2>Nuevas novedades que llegaron a nuestra tienda  </h2>
+           <h2>Visite nuestra tienda y haga sus pedidos</h2>
+        </section>
+        <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
+    </header>
+    <main>
+        
+        <section class="portafolio">
+            <div class="contenedor">
+                <h1 class="titulo">¡NOVEDADES! </h1>
+                <div class="galeria-port">
+                    <div class="imagen-port">
+                        <img src="img/img1.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Fresas  el kilo $40.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/img2.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Uvas el kilo  $80.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/img4.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Papaya por kg  $34.80</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/img6.webp" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Ensalada de verdura $30.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/img7.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Sopa de verdura $40.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/img8.avif" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Bolsa de legumbres 2kg $180.00</p>
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/img9.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Zanahoria el kg $25.00</p>
+                            
+                        </div>
+                    </div>
+                    <div class="imagen-port">
+                        <img src="img/10.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Brocoli por kilo $25.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/11.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Papa por kilo $5.85</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/12.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Berenjena $65.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/13.webp" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Betabel por kilo $39.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/14.webp" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Aguacate $22.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/15.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Jitomate por kilo $15.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/17.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Manzana $28.90</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/18.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Pera por kilo $74.90</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/fruta1.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Platano por kilo  $28.90</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/fruta2.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Kiwi por kilo $44.90</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/35.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Yuka $60.90</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/34.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Durazno por kilo $15.00</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                        <img src="img/verdura3.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="img/icono2.png" alt="">
+                            <p>Lechuga $20.00</p>
+                        </div>
+                    </div>
+                  
+                  
+                </div>
+            </div>
+                  
+        </section>
+        
+    
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <style>
+
+        button {
+            background-color: #FF9AA2; /* Color de fondo */
+            color: #FFB7B2; /* Color de texto */
+            padding: 10px 20px; /* Espaciado interno */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cursor al pasar */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+
+        button:hover {
+            background-color: #FFDAC1; /* Cambio de color al pasar el mouse */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón de Regresar</title>
+</head>
+<body>
+    <h1>Reproductor de Audio</h1>
+    <audio controls>
+      <source src="img/audio1.mp4" type="audio/mp3">
+      Tu navegador no soporta la reproducción de audio.
+    </audio>
+    <!-- Botón para regresar -->
+    <button onclick="window.location.href = 'index.html';"> Regresar</button>
+</body>
+</html>
+

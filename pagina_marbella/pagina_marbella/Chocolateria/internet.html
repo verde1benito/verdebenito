@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Carga</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Para evitar el desplazamiento mientras carga */
+            background: linear-gradient(135deg, #ff758c, #ff7eb3); /* Fondo degradado */
+            animation: backgroundAnimation 6s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        @keyframes backgroundAnimation {
+            0%, 100% { background: linear-gradient(135deg, #ff758c, #ff7eb3); }
+            50% { background: linear-gradient(135deg, #ff7eb3, #ff758c); }
+        }
+
+        #loading-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .spinner {
+            width: 100px;
+            height: 100px;
+            border: 12px solid rgba(255, 255, 255, 0.2);
+            border-top: 12px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        p {
+            font-size: 1.8em;
+            margin-top: 20px;
+            color: #fff;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+            animation: textGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8); }
+            to { text-shadow: 0px 0px 20px rgba(255, 255, 255, 1); }
+        }
+
+        /* Botones de redes sociales */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+            color: #ffeb3b;
+        }
+
+        /* Iconos */
+        .icon {
+            font-size: 3em;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icons .icon {
+            color: white;
+            font-size: 24px; /* Tamaño mediano */
+            text-decoration: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p>Cargando...</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61557482394458&mibextid=ZbWKwL" target="_blank" class="icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/choco_galidushh?igsh=NHRqcXRkMmRnZ3Y=" target="_blank" class="icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <!-- Ícono de juego -->
+            <a href="juego.html" target="_blank" class="icon">
+                <i class="fas fa-gamepad"></i>
+            </a>
+            
+            
+            
+        </div>
+
+        
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Simular carga de la página
+            setTimeout(function() {
+                window.location.href = "index.html"; // Redirigir a la página principal
+            }, 9000); // Simulación de 7 segundos de carga
+        });
+    </script>
+</body>
+</html>
+

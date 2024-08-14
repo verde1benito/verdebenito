@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Frutas y Verduras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #F8F9FA;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header img {
+            max-width: 100px;
+        }
+        h1 {
+            color: #FF9AA2;
+        }
+        #main-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+        }
+        #products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            width: 60%;
+        }
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #FFF;
+            width: 200px;
+            height: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            background-color: #FFB7B2;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .product img {
+            max-width: 80%;
+            max-height: 60%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .product-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product h2 {
+            margin-top: 10px;
+            color: #FF9AA2;
+        }
+        .product p {
+            margin-bottom: 10px;
+        }
+        .quantity-controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .quantity-controls button {
+            background-color: #B5EAD7;
+            color: #333;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .quantity-controls button:hover {
+            background-color: #E2F0CB;
+        }
+        .quantity-label {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .quantity-label select {
+            margin-left: 5px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button.add-to-cart {
+            background-color: #B5EAD7;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button.add-to-cart:hover {
+            background-color: #E2F0CB;
+        }
+        #cart-section {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #cart, #invoice {
+            background-color: #FFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #cart h2, #invoice h2 {
+            color: #FF9AA2;
+        }
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+            background-color: #C7CEEA;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        #cart-items li {
+            padding: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #cart-items li .item-actions {
+            display: flex;
+            gap: 10px;
+        }
+        #cart-items li .item-actions button {
+            padding: 5px;
+            background-color: #FF9AA2;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #cart-items li .item-actions button:hover {
+            background-color: #FFB7B2;
+        }
+        #invoice-content h3 {
+            margin-bottom: 10px;
+        }
+        #invoice-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #invoice-content li {
+            padding: 5px 0;
+        }
+        button.generate-invoice {
+            background-color: #FFDAC1;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button.generate-invoice:hover {
+            background-color: #FFE0C7;
+        }
+        button.print-invoice {
+            background-color: #B5EAD7;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button.print-invoice:hover {
+            background-color: #E2F0CB;
+        }
+        
+        header {
+            background-color: #C7CEEA;
+            color: white;
+            padding: 10px 0;
+        }
+        
+        .menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            background-color: #FF9AA2;
+            color: white;
+        }
+        
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .menu ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .menu ul li a:hover {
+            text-decoration: underline;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="menu">
+            <ul>
+                <li><a href="prueba1504/prueba1504/index.html">Pago por tarjeta</a></li>
+                <li><a href="registrarpedidos.html">Registro de pedido</a></li>
+                <li><a href="servicioadomicilio.html">Servicio a domicilio</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    
+
+    
+    <header>
+        <img src="img/logoooo.png" alt="Logo de la tienda" id="logo">
+        <h1>Tienda de Frutas y Verduras</h1>
+    </header>
+    <div id="main-content">
+        <div id="products">
+            <div class="product">
+                <img src="img/verdura4.jpg" alt="Cebolla">
+                <div class="product-content">
+                    <h2>Cebolla</h2>
+                    <p>Precio: $10.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-onion', -1)">-</button>
+                        <select id="quantity-onion">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-onion', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Cebolla', 10.0, 'quantity-onion')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/verdura3.jpg" alt="Lechuga">
+                <div class="product-content">
+                    <h2>Lechuga</h2>
+                    <p>Precio: $8.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-lettuce', -1)">-</button>
+                        <select id="quantity-lettuce">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-lettuce', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Lechuga', 8.0, 'quantity-lettuce')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/verdura2.jpeg" alt="Lechuga">
+                <div class="product-content">
+                    <h2>Berenjena</h2>
+                    <p>Precio: $40.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-eggplant', -1)">-</button>
+                        <select id="quantity-eggplant">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-eggplant', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Berenjena', 40.0, 'quantity-eggplant')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/verdura1.jpg" alt="Brcoli">
+                <div class="product-content">
+                    <h2>Brócoli</h2>
+                    <p>Precio: $20.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-broccoli', -1)">-</button>
+                        <select id="quantity-broccoli">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-broccoli', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Brócoli', 20.0, 'quantity-broccoli')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/img10.webp" alt="Zanahoria">
+                <div class="product-content">
+                    <h2>Zanahoria</h2>
+                    <p>Precio: $12.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-carrot', -1)">-</button>
+                        <select id="quantity-carrot">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-carrot', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Zanahoria', 12.0, 'quantity-carrot')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/img2.jpg" alt="Uva">
+                <div class="product-content">
+                    <h2>Uva</h2>
+                    <p>Precio: $25.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-grape', -1)">-</button>
+                        <select id="quantity-grape">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-grape', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Uva', 25.0, 'quantity-grape')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/img1.jpg" alt="Fresa">
+                <div class="product-content">
+                    <h2>Fresa</h2>
+                    <p>Precio: $30.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-strawberry', -1)">-</button>
+                        <select id="quantity-strawberry">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-strawberry', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Fresa', 30.0, 'quantity-strawberry')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/11.jpg" alt="Papa">
+                <div class="product-content">
+                    <h2>Papa</h2>
+                    <p>Precio: $15.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-dad', -1)">-</button>
+                        <select id="quantity-dad">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-dad', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Papa', 15.0, 'quantity-dad')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/13.webp" alt="Betabel">
+                <div class="product-content">
+                    <h2>Betabel</h2>
+                    <p>Precio: $35.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-beetroot', -1)">-</button>
+                        <select id="quantity-beetroot">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-beetroot', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Betabel', 35.0, 'quantity-beetroot')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/14.webp" alt="Aguacate">
+                <div class="product-content">
+                    <h2>Aguacate</h2>
+                    <p>Precio: $48.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-avocado', -1)">-</button>
+                        <select id="quantity-avocado">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-avocado', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Aguacate', 48.0, 'quantity-avocado')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/15.jpg" alt="Jitomate">
+                <div class="product-content">
+                    <h2>Jitomate</h2>
+                    <p>Precio: $16.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-tomato', -1)">-</button>
+                        <select id="quantity-tomato">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-tomato', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Jitomate', 16.0, 'quantity-tomato')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/17.jpg" alt="Manzana">
+                <div class="product-content">
+                    <h2>Manzana</h2>
+                    <p>Precio: $10.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-apple', -1)">-</button>
+                        <select id="quantity-apple">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-apple', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Manzana', 10.0, 'quantity-apple')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/18.jpg" alt="Pera">
+                <div class="product-content">
+                    <h2>Pera</h2>
+                    <p>Precio: $28.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-pear', -1)">-</button>
+                        <select id="quantity-pear">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-pear', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Pera', 8.0, 'quantity-pear')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/verdura3.jpg" alt="Cereza">
+                <div class="product-content">
+                    <h2>Cereza</h2>
+                    <p>Precio: $60.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-cherry', -1)">-</button>
+                        <select id="quantity-cherry">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-cherry', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Cereza', 60.0, 'quantity-cherry')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/31.webp" alt="Guanábana">
+                <div class="product-content">
+                    <h2>Guanábana</h2>
+                    <p>Precio: $70.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-soursop', -1)">-</button>
+                        <select id="quantity-soursop">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-soursop', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Guanábana', 70.0, 'quantity-soursop')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/33.jpg" alt="Kiwi">
+                <div class="product-content">
+                    <h2>Kiwi</h2>
+                    <p>Precio: $45.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-kiwi', -1)">-</button>
+                        <select id="quantity-kiwi">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-kiwi', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Kiwi', 45.0, 'quantity-kiwi')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/34.jpg" alt="Durazno">
+                <div class="product-content">
+                    <h2>Durazno</h2>
+                    <p>Precio: $20.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-peach', -1)">-</button>
+                        <select id="quantity-peach">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-peach', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Durazno', 20.0, 'quantity-peach')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/48.jpg" alt="Calabazas">
+                <div class="product-content">
+                    <h2>Calabazas</h2>
+                    <p>Precio: $5.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-pumpkins', -1)">-</button>
+                        <select id="quantity-pumpkins">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-pumpkins', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Calabazas', 5.0, 'quantity-pumpkins')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/verdura3.jpg" alt="Ejotes">
+                <div class="product-content">
+                    <h2>Ejotes</h2>
+                    <p>Precio: $12.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-green beans', -1)">-</button>
+                        <select id="quantity-green beans">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-green beans', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Ejotes', 12.0, 'quantity-green beans')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/44.jpg" alt="Chayote">
+                <div class="product-content">
+                    <h2>Chayote</h2>
+                    <p>Precio: $35.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-chayote', -1)">-</button>
+                        <select id="quantity-chayote">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-chayote', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Chayote', 35.0, 'quantity-chayote')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/50.jpg" alt="Chile rojo">
+                <div class="product-content">
+                    <h2>Chile rojo</h2>
+                    <p>Precio: $8.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-red pepper', -1)">-</button>
+                        <select id="quantity-red pepper">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-red pepper', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Chile rojo', 8.0, 'quantity-red pepper')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/51.jpg" alt="Champiñones">
+                <div class="product-content">
+                    <h2>Champiñones</h2>
+                    <p>Precio: $40.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-mushrooms', -1)">-</button>
+                        <select id="quantity-mushrooms">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-mushrooms', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Champiñones', 40.0, 'quantity-mushrooms')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/fruta1.jpg" alt="Plátano">
+                <div class="product-content">
+                    <h2>Plátano</h2>
+                    <p>Precio: $12.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-banana', -1)">-</button>
+                        <select id="quantity-banana">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-banana', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Plátano', 12.0, 'quantity-banana')">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/tomate.jpg" alt="Tomate">
+                <div class="product-content">
+                    <h2>Tomate</h2>
+                    <p>Precio: $10.0 por kilo</p>
+                    <div class="quantity-controls">
+                        <div class="quantity-label">Cantidad:</div>
+                        <button onclick="updateQuantity('quantity-tomato', -1)">-</button>
+                        <select id="quantity-tomato">
+                            <option value="0.25">1/4 kilo</option>
+                            <option value="0.5">1/2 kilo</option>
+                            <option value="1">1 kilo</option>
+                            <option value="2">2 kilos</option>
+                            <option value="3">3 kilos</option>
+                            <option value="4">4 kilos</option>
+                            <option value="5">5 kilos</option>
+                            <option value="6">6 kilos</option>
+                            <option value="7">7 kilos</option>
+                            <option value="8">8 kilos</option>
+                            <option value="9">9 kilos</option>
+                            <option value="10">10 kilos</option>
+                            <option value="15">15 kilos</option>
+                            <option value="20">20 kilos</option>
+                            <option value="25">25 kilos</option>
+                            <option value="30">30 kilos</option>
+                            <option value="35">35 kilos</option>
+                            <option value="40">40 kilos</option>
+                            <option value="45">45 kilos</option>
+                            <option value="50">50 kilos</option>
+                        </select>
+                        <button onclick="updateQuantity('quantity-tomato', 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Tomate', 10.0, 'quantity-tomato')">Agregar al Carrito</button>
+                </div>
+            </div>
+
+    
+            <!-- Agrega más productos aquí -->
+        </div>
+        <div id="cart-section">
+            <div id="cart">
+                <h2>Carrito de Compras</h2>
+                <ul id="cart-items"></ul>
+                <p id="total-price"></p>
+                <button class="generate-invoice" onclick="generateInvoice()">Generar Factura</button>
+            </div>
+            <div id="invoice" style="display:none;">
+                <h2>Factura</h2>
+                <div id="invoice-content"></div>
+                <button class="print-invoice" onclick="printInvoice()">Imprimir Factura</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script>
+        let cart = [];
+    
+        function addToCart(productName, pricePerKilo, quantityId) {
+            const quantity = parseFloat(document.getElementById(quantityId).value);
+            const totalPrice = pricePerKilo * quantity;
+    
+            // Check if the product is already in the cart
+            const existingItem = cart.find(item => item.product === productName);
+    
+            if (existingItem) {
+                existingItem.quantity += quantity;
+                existingItem.totalPrice += totalPrice;
+            } else {
+                cart.push({
+                    product: productName,
+                    quantity: quantity,
+                    totalPrice: totalPrice
+                });
+            }
+    
+            displayCart();
+        }
+    
+        function updateQuantity(quantityId, change) {
+            const quantitySelect = document.getElementById(quantityId);
+            let quantity = parseFloat(quantitySelect.value);
+            quantity += change;
+    
+            if (quantity < 0) {
+                quantity = 0;
+            }
+    
+            quantitySelect.value = quantity.toFixed(2);
+        }
+    
+        function displayCart() {
+            const cartItems = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            cartItems.innerHTML = '';
+            let total = 0;
+    
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>${item.product} - ${item.quantity.toFixed(2)} kilos - $${item.totalPrice.toFixed(2)}</span>
+                    <div class="item-actions">
+                        <button onclick="updateCartItem('${item.product}', -1)">-</button>
+                        <button onclick="updateCartItem('${item.product}', 1)">+</button>
+                        <button onclick="removeCartItem('${item.product}')">Eliminar</button>
+                    </div>
+                `;
+                cartItems.appendChild(li);
+                total += item.totalPrice;
+            });
+    
+            totalPriceElement.textContent = `Total a pagar: $${total.toFixed(2)}`;
+        }
+    
+        function updateCartItem(productName, change) {
+            const item = cart.find(item => item.product === productName);
+    
+            if (item) {
+                item.quantity += change;
+                item.totalPrice = item.quantity * getPricePerKilo(productName);
+                if (item.quantity <= 0) {
+                    removeCartItem(productName);
+                }
+            }
+    
+            displayCart();
+        }
+    
+        function removeCartItem(productName) {
+            cart = cart.filter(item => item.product !== productName);
+            displayCart();
+        }
+    
+        function getPricePerKilo(productName) {
+            switch (productName) {
+                case 'Cebolla':
+                    return 10.0;
+                case 'Lechuga':
+                    return 8.0;
+                case 'Berenjena':
+                    return 40.0;
+                case 'Brócoli':
+                    return 20.0;
+                case 'Zanahoria':
+                    return 12.0;
+                case 'Uva':
+                    return 25.0;
+                case 'Fresa':
+                    return 30.0;
+                case 'Papa':
+                    return 15.0;
+                case 'Betabel':
+                    return 15.0;
+                case 'Aguacate':
+                    return 48.0;
+                case 'Jitomate':
+                    return 16.0;
+                case 'Manzana':
+                    return 10.0;
+                case 'Pera':
+                    return 28.0;
+                case 'Cereza':
+                    return 60.0;
+                case 'Guanabana':
+                    return 70.0;
+                case 'Kiwi':
+                    return 45.0;
+                case 'Durazno':
+                    return 20.0;
+                case 'Calabazas':
+                    return 5.0;
+                case 'Ejotes':
+                    return 12.0;
+                case 'Chayote': 
+                    return 35.0;
+                case 'Chile rojo': 
+                    return 8.0;
+                case 'champiñones': 
+                    return 40.0;
+                case 'Plátano':
+                    return 12.0;
+                case 'Tomate':
+                    return 10.0;
+                // Agrega más productos según sea necesario
+                default:
+                    return 0;
+            }
+        }
+    
+        function generateInvoice() {
+            const invoiceContent = document.getElementById('invoice-content');
+            invoiceContent.innerHTML = '<h3>Factura de Compra</h3>';
+        
+            // Agregar el logo de OXXO
+            invoiceContent.innerHTML += '<img src="img/oxxo.png" alt="Logo OXXO" style="width: 150px; height: auto; display: block; margin: 10px auto;">';
+        
+            invoiceContent.innerHTML += '<ul>';
+        
+            cart.forEach(item => {
+                invoiceContent.innerHTML += `<li>${item.product} - ${item.quantity.toFixed(2)} kilos - $${item.totalPrice.toFixed(2)}</li>`;
+            });
+        
+            invoiceContent.innerHTML += '</ul>';
+            const total = cart.reduce((acc, item) => acc + item.totalPrice, 0);
+            invoiceContent.innerHTML += `<p>Total a pagar: $${total.toFixed(2)}</p>`;
+        
+            // Generar código de barras para el pago en OXXO
+            const barcodeCode = `123456789012`; // Este es un código de ejemplo. Puedes generar uno dinámicamente.
+            invoiceContent.innerHTML += `<p>Código de barras:</p>`;
+            invoiceContent.innerHTML += `<svg id="barcode"></svg>`;
+            JsBarcode("#barcode", barcodeCode, {
+                format: "CODE128",
+                displayValue: true,
+                fontSize: 18
+            });
+        
+            // Calcular la vigencia (3 días desde hoy)
+            const currentDate = new Date();
+            const paymentDeadline = new Date();
+            paymentDeadline.setDate(currentDate.getDate() + 3);
+        
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDeadline = paymentDeadline.toLocaleDateString('es-ES', options);
+        
+            // Mostrar la vigencia en la factura
+            invoiceContent.innerHTML += `<p>Vigencia para pagar: ${formattedDeadline}</p>`;
+        
+            document.getElementById('invoice').style.display = 'block';
+        }
+        
+        function printInvoice() {
+            // Guardar el contenido original de la página
+            const originalContents = document.body.innerHTML;
+        
+            // Obtener el contenido de la factura
+            const printContents = document.getElementById('invoice').innerHTML;
+        
+            // Reemplazar el contenido de la página con el contenido de la factura
+            document.body.innerHTML = printContents;
+        
+            // Imprimir la factura
+            window.print();
+        
+            // Restaurar el contenido original de la página
+            document.body.innerHTML = originalContents;
+        
+            // Recargar la página para restaurar los eventos y estado inicial
+            window.location.reload();
+        }
+        
+    </script>
+    
+    
+
+
+
+    
+</body>
+</html>
